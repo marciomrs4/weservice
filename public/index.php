@@ -7,11 +7,11 @@ $app = new \Slim\Slim();
 $auth = new weverest\weservice\Authorization();
 
 
-$app->get('/',function()use($auth,$app){
+$app->get('/',function()use($app){
 
-    $secret = $app->request()->headers('Authorization');
+    $token = $app->request()->headers('Authorization');
 
-    echo json_encode($auth->validateSecret($secret));
+    echo json_encode(['token' => $token]);
 });
 
 
