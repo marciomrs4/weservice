@@ -7,5 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'weverest\\' => array($vendorDir),
+    'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
+    'app\\' => array($baseDir . '/src'),
     'Slim' => array($vendorDir . '/slim/slim'),
+    'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
 );
