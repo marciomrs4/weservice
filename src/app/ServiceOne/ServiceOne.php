@@ -28,7 +28,7 @@ class ServiceOne implements weservice\IService
     public function setAcceptFromRoute(array $array)
     {
         //Manipula as entradas e passa para o atributo array.
-        $this->array =$array;
+        $this->array = $array;
 
         $user_id = $this->array['user_id'];
 

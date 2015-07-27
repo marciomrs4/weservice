@@ -24,6 +24,16 @@ $app->get('/servicetwo/:user_id',function($user_id)use($ServiceTwo){
     echo json_encode($dados);
 });
 
+
+$app->get('/container/:user_id',function($user_id) use($ServiceOne){
+
+    $dados = $ServiceOne->setAcceptFromRoute(array('user_id'=>$user_id))
+                     ->getService();
+
+    echo json_encode($dados);
+});
+
+
 //Rota com get para token
 $app->get('/',function()use($app){
 
@@ -33,11 +43,15 @@ $app->get('/',function()use($app){
 });
 
 
-//Rota para auth
-$auth = new weverest\weservice\Authorization();
-$app->post('/auth/:secret',function($secret)use($auth){
 
-    echo json_encode($auth->validateSecret($secret));
+//Rota para auth
+//$auth = new weverest\weservice\Authorization();
+$service = new \weverest\container\Container();
+$app->post('/auth/:secret',function($secret)use($service){
+
+    echo json_encode($service->getContainer('auth')->validateSecret($secret));
+
+    //echo json_encode($auth->validateSecret($secret));
 
 });
 
