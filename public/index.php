@@ -4,7 +4,7 @@ include_once '../vendor/autoload.php';
 
 $app = new \Slim\Slim();
 
-//Rota com servico um
+/*//Rota com servico um
 $ServiceOne = new app\ServiceOne\ServiceOne();
 $app->get('/serviceone/:user_id',function($user_id) use ($ServiceOne, $app){
 
@@ -53,10 +53,40 @@ $app->post('/auth/:secret',function($secret)use($service){
 
     //echo json_encode($auth->validateSecret($secret));
 
+});*/
+$config;
+
+$serviceContainer = weverest\container\ServiceContainer($config);
+
+$app->get('/:service',function($service) use ($serviceContainer, $app){
+
+    $serviceContainer->setService($service)
+                     ->delegateService();
+
 });
 
+$app->post('/:service',function($service) use ($serviceContainer, $app){
 
+    $serviceContainer->setService($service)
+                     ->delegateService();
 
+});
+
+$app->put('/:service',function($service) use ($serviceContainer, $app){
+
+    $serviceContainer->setService($service)
+                     ->delegateService();
+
+});
+
+$app->delete(':service',function($service) use ($serviceContainer, $app){
+
+    $serviceContainer->setService($service)
+                     ->delegateService();
+
+});
+
+#Limit comentario
 $app->response->headers->set('Content-Type', 'application/json');
 //$app->response()->headers()->set('Authorization', 'Bearer '.'token-gerado');
 $app->run();

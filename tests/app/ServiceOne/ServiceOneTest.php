@@ -30,8 +30,12 @@ class ServiceOneTest extends \PHPUnit_Framework_TestCase
 
     public function testMustBeReturnArray()
     {
+
         $repository = new RepositoryOne();
         $array = $repository->getUserById(1);
         $this->assertInternalType('array',$array);
+
+        $valor = 1;
+        $this->assertInternalType('integer',$valor);
     }
 }

@@ -24,10 +24,10 @@ class RepositoryOne implements weservice\IRepository
     public function getUserById($id)
     {
         //Retorna um Array de Exemplo, como se fosse do banco
-        return [
-            ['name' => 'Diogo Brito',
-                'email'=>'brito@weverest.com.br']
-        ];
+        return
+            array(
+                'name' => 'Diogo Brito',
+                'email'=>'brito@weverest.com.br');
     }
 
 
